@@ -1,5 +1,5 @@
 export const puzzles = {
-    "2025-06-02": [
+    "2025-06-03": [
         {
             text: "Sharks can live up to 500 years.",
             isLie: true,

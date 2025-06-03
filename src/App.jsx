@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-      <div className="p-8 bg-yellow-100 text-center text-2xl font-bold">
+      {/* <div className="p-8 bg-yellow-100 text-center text-2xl font-bold">
         TAILWIND TEST
-      </div>
+      </div> */}
 
       <Game />
 
