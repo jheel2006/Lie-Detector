@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #1e293b;
     background-color: #f8fafc;
@@ -123,12 +126,6 @@ body {
     overflow: hidden;
 }
 
-.option-button:hover:not(:disabled) {
-    background-color: #f1f5f9;
-    border-color: #a5b4fc;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-}
 
 .option-button.selected {
     border-color: #6366f1;
@@ -361,34 +358,36 @@ body {
 
 /* Distinct Connections-style color blocks with darker flat colors */
 .option-button:nth-child(1) {
-    background-color: #facc15;
+    background-color: #e0ba23;
     /* Gold */
     color: #1e1e1e;
 }
 
 .option-button:nth-child(2) {
-    background-color: #38bdf8;
+    background-color: #45b0de;
     /* Sky */
     color: #1e1e1e;
 }
 
 .option-button:nth-child(3) {
-    background-color: #a78bfa;
+    background-color: #977de4;
     /* Violet */
     color: #1e1e1e;
 }
 
 .option-button:nth-child(4) {
-    background-color: #34d399;
+    background-color: #35c590;
     /* Emerald */
     color: #1e1e1e;
 }
 
 /* Hover should just darken slightly */
 .option-button:hover:not(:disabled) {
-    filter: brightness(0.95);
-    transform: translateY(-2px);
+    transform: scale(1.015);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 
 /* Selected state has a bold border and slight scale */
 .option-button.selected {
@@ -420,4 +419,248 @@ body {
 .option-explanation {
     font-style: italic;
     color: #475569;
+}
+
+.option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    flex-shrink: 0;
+}
+
+.icon-check,
+.icon-cross {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    background-color: #1e293b;
+    padding: 0.2rem;
+    border-radius: 50%;
+}
+
+.option-letter {
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-explanation {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #475569;
+    margin-top: 0.25rem;
+}
+
+.drumroll-text {
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem 0;
+    animation: drumrollPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes drumrollPulse {
+    from {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Modern Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Popup Container */
+.popup {
+    background: white;
+    border-radius: 16px;
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 400px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+    position: relative;
+}
+
+/* Popup Content */
+.popup-content {
+    padding: 32px;
+    text-align: center;
+}
+
+.popup-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.popup-icon.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.popup-icon.failure {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.popup-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: #1f2937;
+}
+
+.popup-message {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0 0 32px 0;
+    line-height: 1.5;
+}
+
+/* Popup Button */
+.popup-close {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    min-width: 120px;
+}
+
+.popup-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.popup-close:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Alternative button styles for success/failure */
+.popup-close.success {
+    background: #059669;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.popup-close.success:hover {
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+.popup-close.failure {
+    background: #4b5563;
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.2);
+}
+
+.popup-close.failure:hover {
+    box-shadow: 0 6px 16px rgba(107, 114, 128, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Close button (X) in top right - optional */
+.popup-close-x {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.popup-close-x:hover {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .popup {
+        margin: 16px;
+        width: calc(100% - 32px);
+    }
+
+    .popup-content {
+        padding: 24px;
+    }
+
+    .popup-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+
+    .popup-title {
+        font-size: 20px;
+    }
+
+    .popup-message {
+        font-size: 14px;
+    }
 }
